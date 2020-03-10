@@ -1,9 +1,10 @@
 const router = require("express").Router();
-
+const auth = require("../middlewares/auth");
+router.use(auth)
 //GET Request
 //Callback (req,res)=>{}
 router.get("/",(req,res)=>{
-    res.send({message:"Success"});
+    res.send({message:"Success",userDetails:req.user});
 });
 
 //GET Request
