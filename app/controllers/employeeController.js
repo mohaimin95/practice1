@@ -12,22 +12,24 @@ methods.get = () => {
         });
     });
 }
+
+//Promise 
 methods.getById = (id) => {
     return new Promise((resolve, reject) => {
         if (ObjectId.isValid(id)) {
             Employee.findById(id, (err, docs) => {
                 if (err) {
-                    return reject({ message: "Error",status:500 });
+                    return reject({ message: "Error", status: 500 });
                 } else {
-                    if(!docs) {
-                        return reject({message:"Employee Not Found !",status:404})
+                    if (!docs) {
+                        return reject({ message: "Employee Not Found !", status: 404 })
                     } else {
                         return resolve(docs);
                     }
                 }
             });
         } else {
-            return reject({ message: "Invalid Object ID",status:400 })
+            return reject({ message: "Invalid Object ID", status: 400 })
         }
     });
 }
